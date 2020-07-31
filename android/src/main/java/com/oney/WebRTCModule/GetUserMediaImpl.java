@@ -52,13 +52,15 @@ class GetUserMediaImpl {
             Log.w(TAG, "Error checking for Camera2 API support.", tr);
         }
 
-        if (camera2supported) {
+        /*if (camera2supported) {
             Log.d(TAG, "Creating video capturer using Camera2 API.");
             cameraEnumerator = new Camera2Enumerator(reactContext);
         } else {
             Log.d(TAG, "Creating video capturer using Camera1 API.");
             cameraEnumerator = new Camera1Enumerator(false);
-        }
+        }*/
+        Log.d(TAG, "Creating video capturer using Camera2 API.");
+        cameraEnumerator = new UvcCamera2Enumerator(reactContext);
     }
 
     private AudioTrack createAudioTrack(ReadableMap constraints) {
